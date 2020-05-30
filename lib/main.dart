@@ -1,5 +1,5 @@
+import 'package:enigma_app/splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'SelectStore.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: SelectStore(),
+      home: SplashScreen(),
     );
   }
 }
