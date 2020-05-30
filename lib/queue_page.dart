@@ -5,6 +5,7 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'customer_details_model.dart';
+import 'chatscreen.dart';
 
 class QueuePage extends StatefulWidget {
   @override
@@ -110,10 +111,10 @@ class _QueuePageState extends State<QueuePage> {
                                                 width: 8,
                                               ),
                                               Text(
-                                                costumerList[index]
-                                                        .waitTime
-                                                        .toString() +
-                                                    " mins",
+                                                // costumerList[index]
+                                                //         .waitTime
+                                                //         .toString() +
+                                                    "15 mins",
                                                 style: TextStyle(
                                                   color: Colors.grey[100],
                                                   fontSize: 16,
@@ -226,17 +227,35 @@ class _QueuePageState extends State<QueuePage> {
                                 ),
                               ),
                             ),
-                            Text(
-                              "Need to ask a quick question?",
-                              style: TextStyle(
-                                color: Color(0xff2c3550),
-                                fontSize: 16,
+                            Center(
+                              child: Column(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Text(
+                                      "Need to ask a quick question? \nTalk to an available Customer Care Rep",
+                                      style: TextStyle(
+                                        color: Color(0xff2c3550),
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => ChatScreen())),
+                                    child: Icon(
+                                      Icons.chat,
+                                      color: Color(0xff3ecdff),
+                                      size: 50,
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ]));
                 },
-              )
-              
-              );
+              ));
   }
 }
