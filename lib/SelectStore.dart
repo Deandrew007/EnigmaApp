@@ -46,14 +46,14 @@ class _SelectStoreState extends State<SelectStore> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xffF3F6FF),
           elevation: 0.0,
           brightness: Brightness.light,
         ),
         body: isLoading
             ? Center(child: CircularProgressIndicator())
             : Container(
-                color: Colors.white,
+               color : Color(0xffF3F6FF),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +72,7 @@ class _SelectStoreState extends State<SelectStore> {
                         padding: EdgeInsets.symmetric(horizontal: 24),
                         height: 50,
                         decoration: BoxDecoration(
-                            color: Color(0xffEFEFEF),
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(14)),
                         child: Row(
                           children: <Widget>[
@@ -83,7 +83,7 @@ class _SelectStoreState extends State<SelectStore> {
                             Text(
                               "Search",
                               style:
-                                  TextStyle(color: Colors.grey, fontSize: 19),
+                                  TextStyle(color: Colors.black, fontSize: 19),
                             )
                           ],
                         ),
@@ -144,7 +144,7 @@ class _SelectStoreState extends State<SelectStore> {
                                                       style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w600,
-                                                        fontSize: 14,
+                                                        fontSize: 16,
                                                       ),
                                                     ),
                                                   ),
@@ -160,7 +160,7 @@ class _SelectStoreState extends State<SelectStore> {
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.w600,
-                                                          fontSize: 12,
+                                                          fontSize: 14,
                                                           color:
                                                               Colors.grey),
                                                     ),
@@ -176,7 +176,7 @@ class _SelectStoreState extends State<SelectStore> {
                                                         Icon(
                                                           Icons.watch_later,
                                                           color: Colors.green,
-                                                          size: 14,
+                                                          size: 16,
                                                         ),
                                                         Text(
                                                           merchantList[index]
@@ -184,7 +184,7 @@ class _SelectStoreState extends State<SelectStore> {
                                                               .toString() + " mins",
                                                           style: TextStyle(
                                                             color: Colors.green,
-                                                            fontSize: 12,
+                                                            fontSize: 14,
                                                           ),
                                                         ),
                                                       ],
