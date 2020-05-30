@@ -53,7 +53,7 @@ class _SelectStoreState extends State<SelectStore> {
         body: isLoading
             ? Center(child: CircularProgressIndicator())
             : Container(
-               color : Color(0xffF3F6FF),
+                color: Color(0xffF3F6FF),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,7 +136,7 @@ class _SelectStoreState extends State<SelectStore> {
                                                   Padding(
                                                     padding: const EdgeInsets
                                                         .symmetric(
-                                                      horizontal: 12,
+                                                      horizontal: 14,
                                                       vertical: 2,
                                                     ),
                                                     child: Text(
@@ -151,7 +151,7 @@ class _SelectStoreState extends State<SelectStore> {
                                                   Padding(
                                                     padding: const EdgeInsets
                                                         .symmetric(
-                                                      horizontal: 12,
+                                                      horizontal: 14,
                                                       vertical: 2,
                                                     ),
                                                     child: Text(
@@ -161,14 +161,13 @@ class _SelectStoreState extends State<SelectStore> {
                                                           fontWeight:
                                                               FontWeight.w600,
                                                           fontSize: 14,
-                                                          color:
-                                                              Colors.grey),
+                                                          color: Colors.grey),
                                                     ),
                                                   ),
                                                   Padding(
                                                     padding: const EdgeInsets
                                                         .symmetric(
-                                                      horizontal: 12,
+                                                      horizontal: 14,
                                                       vertical: 2,
                                                     ),
                                                     child: Row(
@@ -180,8 +179,9 @@ class _SelectStoreState extends State<SelectStore> {
                                                         ),
                                                         Text(
                                                           merchantList[index]
-                                                              .estimatedWaitTime
-                                                              .toString() + " mins",
+                                                                  .estimatedWaitTime
+                                                                  .toString() +
+                                                              " mins",
                                                           style: TextStyle(
                                                             color: Colors.green,
                                                             fontSize: 14,
@@ -190,22 +190,30 @@ class _SelectStoreState extends State<SelectStore> {
                                                       ],
                                                     ),
                                                   ),
-                                                  new RaisedButton(
-                                                      color: Colors.greenAccent,
-                                                      onPressed: () =>
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (_) =>
-                                                                      QueuePage())),
-                                                      child:
-                                                          new Text("JOIN LINE"),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            new BorderRadius
-                                                                .circular(14.0),
-                                                      ))
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                      horizontal: 14,
+                                                      vertical: 2,
+                                                    ),
+                                                    child: new RaisedButton(
+                                                        color:
+                                                            Colors.greenAccent,
+                                                        onPressed: () => Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (_) =>
+                                                                    QueuePage())),
+                                                        child: new Text(
+                                                            "JOIN LINE"),
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              new BorderRadius
+                                                                      .circular(
+                                                                  14.0),
+                                                        )),
+                                                  )
                                                 ],
                                               ),
                                             ),
