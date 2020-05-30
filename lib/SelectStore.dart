@@ -1,9 +1,8 @@
 import 'package:enigma_app/company_model.dart';
-import 'package:enigma_app/company_store_card.dart';
+import 'package:enigma_app/queue_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 
 class SelectStore extends StatefulWidget {
   @override
@@ -11,22 +10,23 @@ class SelectStore extends StatefulWidget {
 }
 
 class _SelectStoreState extends State<SelectStore> {
-
-  final String merchantUrl = "https://damp-plains-24002.herokuapp.com/api/merchants";
-  List <CompanyModel> merchantList = List();
+  final String merchantUrl =
+      "https://damp-plains-24002.herokuapp.com/api/merchants";
+  List<CompanyModel> merchantList = List();
   var isLoading = false;
 
-    @override
+  @override
   void initState() {
     super.initState();
     this.fetchData();
   }
 
-   Future <String> fetchData() async {
+  Future<String> fetchData() async {
     setState(() {
       isLoading = true;
     });
-    final response = await http.get(Uri.encodeFull(merchantUrl), headers: {"Accept": "application/json"});
+    final response = await http.get(Uri.encodeFull(merchantUrl),
+        headers: {"Accept": "application/json"});
     print(response.body);
 
     if (response.statusCode == 200) {
@@ -42,7 +42,6 @@ class _SelectStoreState extends State<SelectStore> {
     return "Success";
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +50,9 @@ class _SelectStoreState extends State<SelectStore> {
           elevation: 0.0,
           brightness: Brightness.light,
         ),
-        body: Container(
+        body: isLoading
+            ? Center(child: CircularProgressIndicator())
+            : Container(
                 color: Colors.white,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
                 child: Column(
@@ -65,7 +66,7 @@ class _SelectStoreState extends State<SelectStore> {
                             fontWeight: FontWeight.w600),
                       ),
                       SizedBox(
-                        height: 40,
+                        height: 30,
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 24),
@@ -87,29 +88,139 @@ class _SelectStoreState extends State<SelectStore> {
                           ],
                         ),
                       ),
-                      
-                      // Expanded(
-                      //   child: Container(
-                      //   margin: EdgeInsets.only(top: 20,),
-
-                      //     padding: EdgeInsets.only(
-                      //       left: 16,
-                      //       right: 16,
-                      //     ),
-                         
-                      //     child: GridView.count(
-                      //       crossAxisCount: 2,
-                      //       childAspectRatio: 0.7,
-                      //       children: CompanyStoreProvider.items.map((item) {
-                      //           CompanyStoreCard(
-                                  
-                      //           );
-                                
-                      //       }).toList(),
-                      //       physics: ClampingScrollPhysics(),
-                      //     ),
-                      //   ),
-                      // ),
+                      Expanded(
+                        child: Container(
+                            child: CustomScrollView(
+                          primary: false,
+                          slivers: <Widget>[
+                            SliverPadding(
+                              padding: const EdgeInsets.only(
+                                  top: 20, left: 10, right: 10),
+                              sliver: SliverGrid(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 0.5,
+                                ),
+                                delegate: SliverChildBuilderDelegate(
+                                  (BuildContext context, int index) {
+                                    return ClipRRect(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(
+                                          20,
+                                        ),
+                                      ),
+                                      child: Container(
+                                        color: Colors.white,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Expanded(
+                                                flex: 6,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                    fit: BoxFit.contain,
+                                                    image: NetworkImage(
+                                                        merchantList[index]
+                                                            .logoImage),
+                                                  )),
+                                                )),
+                                            Expanded(
+                                              flex: 4,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                      horizontal: 12,
+                                                      vertical: 2,
+                                                    ),
+                                                    child: Text(
+                                                      merchantList[index].name,
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 14,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                      horizontal: 12,
+                                                      vertical: 2,
+                                                    ),
+                                                    child: Text(
+                                                      merchantList[index]
+                                                          .address,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 12,
+                                                          color:
+                                                              Colors.grey),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                      horizontal: 12,
+                                                      vertical: 2,
+                                                    ),
+                                                    child: Row(
+                                                      children: <Widget>[
+                                                        Icon(
+                                                          Icons.watch_later,
+                                                          color: Colors.green,
+                                                          size: 14,
+                                                        ),
+                                                        Text(
+                                                          merchantList[index]
+                                                              .estimatedWaitTime
+                                                              .toString() + " mins",
+                                                          style: TextStyle(
+                                                            color: Colors.green,
+                                                            fontSize: 12,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  new RaisedButton(
+                                                      color: Colors.greenAccent,
+                                                      onPressed: () =>
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder: (_) =>
+                                                                      QueuePage())),
+                                                      child:
+                                                          new Text("JOIN LINE"),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            new BorderRadius
+                                                                .circular(14.0),
+                                                      ))
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  childCount: merchantList.length,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                      ),
                     ])));
   }
 }
