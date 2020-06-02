@@ -4,7 +4,7 @@ virtualQ Prototype for NCB Hackcelerate Hackathon - Get told via sms or app your
 
 ## Things to note
 
-The data parsed in the app is connected to our Flask backend. 
+The data parsed in the app is connected to our Flask backend.
 
 ## Screenshots
 
