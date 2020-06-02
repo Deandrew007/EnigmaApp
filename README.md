@@ -1,6 +1,6 @@
 # enigma_app
 
-virtualQ Prototype for NCB Hackcelerate - Get told via sms or app your wait time and when to arrive at the store location.
+virtualQ Prototype for NCB Hackcelerate Hackathon - Get told via sms or app your wait time and when to arrive at the store location.
 
 ## Things to note
 
