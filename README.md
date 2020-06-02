@@ -1,16 +1,9 @@
 # enigma_app
 
-A new Flutter project.
+virtualQ Prototype for NCB Hackcelerate - Get told via sms or app your wait time and when to arrive at the store location.
 
-## Getting Started
+## Things to note
 
-This project is a starting point for a Flutter application.
+The data parsed in the app is connected to our Flask backend. 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Welcome Screen](screenshots/welcomescreen.jpeg)
