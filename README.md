@@ -8,6 +8,6 @@ The data parsed in the app is connected to our Flask backend.
 
 ## Screenshots
 
-![Welcome Screen](screenshots/welcomescreen.jpg)
+![Welcome Screen](screenshots/welcomescreen.png)
 ![Merchant Stores Screen](screenshots/merchantstores.png)
 ![Queue Screen](screenshots/queue.png)
